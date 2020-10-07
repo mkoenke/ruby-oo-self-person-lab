@@ -22,7 +22,6 @@ class Person
 
     def hygiene=(new_hygiene)
         @hygiene = new_hygiene
-        new_hygiene + increment
         if @hygiene > 10
             @hygiene = 10
         elsif @hygiene < 0
@@ -70,38 +69,32 @@ class Person
     end
 
     def take_bath
-        increment = 4
-        hygiene=(new_hygiene)
+        self.hygiene += 4
         return "♪ Rub-a-dub just relaxing in the tub ♫"
     end
 
     def work_out
-        @happiness + 2
-        @hygiene - 3
-        check_hygiene
-        check_happiness
+        self.happiness += 2
+        self.hygiene -= 3
         return "♪ another one bites the dust ♫"
     end
 
     def call_friend(name = "friend")
-        self.happiness + 3
-        name.happiness + 3
-        check_happiness
-        return "Hi #{name}! It's #{self}. How are you?"
+        self.happiness += 3
+        name.happiness += 3
+        return "Hi #{name.name}! It's #{self.name}. How are you?"
     end
 
     def start_conversation(name, topic)
         if 
             topic == "politics"
-            self.happiness - 1
-            name.happiness - 1
-            check_happiness
+            self.happiness -= 1
+            name.happiness -= 1
             return "blah blah partisan blah lobbyist"
         elsif
             topic == "weather"
-            self.happiness + 1
-            name.happiness + 1
-            check_happiness
+            self.happiness += 1
+            name.happiness += 1
             return "blah blah sun blah rain"
         else
             return "blah blah blah blah blah"
